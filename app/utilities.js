@@ -318,7 +318,7 @@ class Utilities {
 			},
 			exportActivityString: {
 				name: "Game Status Template String",
-				val: "Current Room: ${mode} on ${map}\\nLink: https://krunker.io/?game=${id}\\n${time} seconds remaining. I'm \x22${user}\x22 and using ${class.name}",
+				val: "Current Room: ${mode} on ${map}\\nLink: https://krunker.io/?game=${id}\\n${time} seconds remaining. My username is ${user}, and using ${class.name}",
 				html: () => generateSetting("text", "exportActivityString", this, "Game Activity Export Template String")
 			},
 			// Disabled This feature since beta server is down

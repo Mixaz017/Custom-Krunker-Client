@@ -1,6 +1,6 @@
 # Custom-Krunker-Client
 An Open-Source, Customized Krunker Desktop Client.  
-We have a [Discord Server](https://discord.gg/XmcW7ny) and providing some supports!
+We have a [Discord Server](https://discord.gg/Gwb8psk) and providing some supports!
 
 ## Status
 I purely enjoy working on this project, but this project is not my job and developments can be unstable.
