@@ -6,7 +6,10 @@ We have a [Discord Server](https://discord.gg/Gwb8psk) and providing some suppor
 I purely enjoy working on this project, but this project is not my job and developments can be unstable.
 As of now, this client is based on the official client, and main focus is to bring bugfixes, tweaks, and more customizability to the client.
 
-I'm accepting bug reports, suggestions and feedbacks in our Discord.
+I'm looking for a developer to maintain this client because I don't play Krunker anymore.
+If you are interested and thinks that your skill is enough to maintain this client, join the Discord and DM me.
+
+I'm also accepting bug reports, suggestions and feedbacks in our Discord.
 
 ## How it Works and Why this Client?
 - This client is meant to be a superior of the official client.
