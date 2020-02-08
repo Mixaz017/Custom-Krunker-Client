@@ -80,9 +80,24 @@ class Utilities {
 					else if (!init) clearInterval(this.settings.preventAFK.resources.intervalId)
 				}
 			}, */
-			rememberSearch: {
-				name: "Remember Server Search",
+			chatSpecialChars: {
+				name: "Chat Special Characters",
 				pre: "<div class='setHed customUtility'>General Tweak</div>",
+				val: true,
+				html: () => generateSetting("checkbox", "chatSpecialChars", this),
+				set: (value, init) => {
+					if (value && init) chatInput.addEventListener("keydown", event => {
+						if (event.key == "Enter" && document.activeElement == chatInput) {
+							chatInput.value = "&" + Array.from(chatInput.value).map(char => {
+								let codePoint = char.codePointAt()
+								return (31 < codePoint && codePoint < 128) ? char : `&#x${codePoint.toString(16)};`
+							}).join("")
+						}
+					})
+				} 
+			},
+			rememberSearch: {
+				name: "Remember Server Search Keywords",
 				val: false,
 				html: () => generateSetting("checkbox", "rememberSearch", this),
 				resources: {

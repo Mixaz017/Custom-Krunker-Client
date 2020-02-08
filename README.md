@@ -20,14 +20,15 @@ I'm also accepting bug reports, suggestions and feedbacks in our Discord.
 - May improves load time, and better memory managing 
 ---
 - Performance
-	- More accurate FPS limiter ( you can still prefer the original FPS limiter by setting this to 0 )
+	- Accurate FPS limiter ( you can still prefer the original FPS limiter by setting this to 0 )
 - Patches
 	- Adds compatibility with custom fonts to few social and market pages ( optional )
 	- Fixes "Clear Cache" button ( also works faster )
 	- Fixes a bug with the Discord RPC
 	- Fixes splash screen font size
 - General Tweaks
-	- Remembers server search ( optional )
+	- Allows you to chat with special characters like Japanese, Hangul, or 🤯emojis⌨️ ( optional, [Video Example](https://twitter.com/Mixaz017/status/1226155650121527297) )
+	- Remembers server search keywords ( optional )
 	- Seek for new server by pressing F6 key
 - Interface Tweaks
 	- Adds a button that refresh the server browser
