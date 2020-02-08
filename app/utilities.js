@@ -82,6 +82,7 @@ class Utilities {
 			}, */
 			rememberSearch: {
 				name: "Remember Server Search",
+				pre: "<div class='setHed customUtility'>General Tweak</div>",
 				val: false,
 				html: () => generateSetting("checkbox", "rememberSearch", this),
 				resources: {
