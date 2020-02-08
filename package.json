@@ -16,7 +16,7 @@
 		"yargs": "^14.2.2"
 	},
 	"devDependencies": {
-		"electron": "^7.1.11"
+		"electron": "^8.0.0"
 	},
 	"scripts": {
 		"start": "electron .",
