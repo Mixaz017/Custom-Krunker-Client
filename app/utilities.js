@@ -83,7 +83,7 @@ class Utilities {
 			chatSpecialChars: {
 				name: "Chat Special Characters",
 				pre: "<div class='setHed customUtility'>General Tweak</div>",
-				val: true,
+				val: false,
 				html: () => generateSetting("checkbox", "chatSpecialChars", this),
 				set: (value, init) => {
 					if (value && init) chatInput.addEventListener("keydown", event => {
