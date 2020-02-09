@@ -87,7 +87,7 @@ class Utilities {
 				html: () => generateSetting("checkbox", "chatSpecialChars", this),
 				set: (value, init) => {
 					if (value && init) chatInput.addEventListener("keydown", event => {
-						if (!event.isComposing && event.key == "Enter" && document.activeElement == chatInput) {
+						if (!event.isComposing && (event.key == "Enter" || event.key == "e" && event.ctrlKey) && document.activeElement == chatInput) {
 							chatInput.value = "&" + Array.from(chatInput.value).map(char => {
 								let codePoint = char.codePointAt()
 								return (31 < codePoint && codePoint < 128) ? char : `&#x${codePoint.toString(16)};`
