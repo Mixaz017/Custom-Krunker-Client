@@ -175,13 +175,22 @@ class Utilities {
 				html: () => generateSetting("text", "damageOverlayOffsetY", this, "Damage Overlay Y Offset CSS Value"),
 				set: value => bloodDisplay.style.transform = `translate(${this.settings.damageOverlayOffsetY.val}, ${value})`
 			},
-			scorePopupOpacity: {
-				name: "Score Popup Opacity",
+			hidePopupScore: {
+				name: "Hide Popup Score",
+				val: false,
+				html: () => generateSetting("checkbox", "hidePopupScore", this),
+				set: (value, init) => {
+					if (value) document.head.appendChild(this.consts.css.hidePopupScore)
+					else if (!init) this.consts.css.hidePopupScore.remove()
+				}
+			},
+			bonusScoreOpacity: {
+				name: "Bonus Score Opacity",
 				val: 1,
 				min: 0,
 				max: 1,
 				step: 0.01,
-				html: () => generateSetting("slider", "scorePopupOpacity", this),
+				html: () => generateSetting("slider", "bonusScoreOpacity", this),
 				set: value => chalDisplay.style.opacity = value
 			},
 			overlayOpacity: {

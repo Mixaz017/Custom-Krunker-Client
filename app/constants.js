@@ -78,5 +78,8 @@ module.exports.css = {
 	}`,
 	hideSocials: `.headerBarRight > .verticalSeparator, .imageButton {
 		display: none
+	}`,
+	hidePopupScore: `#scoreText {
+		display: none !important
 	}`
 }
