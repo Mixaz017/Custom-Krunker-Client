@@ -120,7 +120,6 @@ const initGameWindow = () => {
 		darkTheme: true,
 		center: true,
 		webPreferences: {
-			nodeIntegration: false,
 			webSecurity: false,
 			preload: consts.joinPath(__dirname, 'preload.js')
 		}
