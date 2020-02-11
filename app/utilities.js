@@ -523,7 +523,7 @@ class Utilities {
 				}
 				requestAnimFrameOrig(...arguments)
 			}
-		} else setTimeout(this.waitGameInit, 200)
+		} else setTimeout(() => this.waitGameInit(), 400)
 	}
 
 	onLoad() {
