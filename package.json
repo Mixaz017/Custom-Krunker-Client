@@ -24,6 +24,7 @@
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder",
 		"postinstall": "electron-builder install-app-deps",
-		"release": "electron-builder"
+		"release": "electron-builder",
+		"quick": "electron-builder --config=quick-build.yml"
 	}
 }

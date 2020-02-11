@@ -6,6 +6,8 @@ const Store = require('electron-store');
 const config = new Store();
 const Utilities = require('./utilities.js');
 
+console.log(__filename)
+
 const initIPC = () => {
 	window.prompt = (text) => ipcRenderer.sendSync('prompt', {
 		type: 'text',

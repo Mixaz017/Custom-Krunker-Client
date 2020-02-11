@@ -4,7 +4,10 @@ const path = require('path');
 // const url = require('url');
 const yargs = require("yargs")
 
+console.log(__filename)
+
 module.exports.DEBUG = process.argv.includes('--dev');
+// module.exports.AUTO_UPDATE_TYPE = "skip"
 module.exports.AUTO_UPDATE_TYPE = yargs.argv.update || null
 
 module.exports.isAMDCPU = os.cpus().findIndex(cpu => cpu.model.includes("AMD")) != -1;

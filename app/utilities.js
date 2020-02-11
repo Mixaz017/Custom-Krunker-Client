@@ -7,6 +7,8 @@ const consts = require('./constants.js');
 const fs = require("fs")
 const path = require("path")
 
+console.log(__filename)
+
 // const CACHE_PATH = consts.joinPath(remote.app.getPath('appData'), remote.app.name, "Cache");
 
 class Utilities {
@@ -106,7 +108,7 @@ class Utilities {
 							serverSearch.addEventListener("input", () => localStorage.setItem("moc_serverSearch", serverSearch.value))
 							serverSearch.value = localStorage.getItem("moc_serverSearch")
 							serverSearch.oninput()
-							menuObserver.disconnect()
+							this.settings.rememberSearch.resources.menuObserver.disconnect()
 						}
 					})
 				},

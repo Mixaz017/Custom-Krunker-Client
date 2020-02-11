@@ -9,6 +9,8 @@ const config = new Store();
 const fs = require('fs');
 const path = require("path")
 
+console.log(__filename)
+
 let rpc = null;
 let gameWindow = null,
 	editorWindow = null,
