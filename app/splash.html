@@ -42,6 +42,7 @@
 		</style>
 	</head>
 	<body>
+		<div id="progress" style="position:absolute;color:white;bottom:48px;left:10px;font-Size:16px;"></div>
 		<div id="update" style="position:absolute;color:white;bottom:10px;left:10px;font-Size:20px;"></div>
 		<div id="curr" style="position:absolute;color:#a280ff;bottom:10px;right:10px;font-Size:16px;"></div>
 		<script>
@@ -72,14 +73,17 @@
 			});
 			ipcRenderer.on('download-progress', (evt, info) => {
 				console.log(info);
-				update.innerHTML = "Downloading...";
+				update.innerHTML = `Downloading... ${Math.floor(info.percent)}%`;
+				progress.innerHTML = `${Math.floor(info.bytesPerSecond / 1000)} kB/s`;
 			});
 			ipcRenderer.on('update-downloaded', (evt, info) => {
 				update.innerHTML = "Installing v" + info.version;
+				progress.innerHTML = ""
 			});
 			ipcRenderer.on('update-error', (evt, info) => {
 				console.log(evt, info);
 				update.innerHTML = "Update failed. Try again next time";
+				progress.innerHTML = ""
 			});
 			ipcRenderer.on('log', console.log);
 		</script>

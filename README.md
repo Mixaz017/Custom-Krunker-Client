@@ -1,6 +1,9 @@
 # Custom-Krunker-Client
 An Open-Source, Customized Krunker Desktop Client.  
-We have a [Discord Server](https://discord.gg/Gwb8psk) and providing some supports!
+We have a [Discord Server](https://discord.gg/Gwb8psk) and providing supports!  
+Please report bugs and crashes, it helps fixing things by a lot.
+
+Worst client name in the universe btw
 
 ## Status
 I purely enjoy working on this project, but this project is not my job and developments can be unstable.
@@ -11,13 +14,12 @@ If you are interested and thinks that your skill is enough to maintain this clie
 
 I'm also accepting bug reports, suggestions and feedbacks in our Discord.
 
-## How it Works and Why this Client?
+## Why this Client?
 - This client is meant to be a superior of the official client.
 - Many extra features available. You can suggest features you want in the Discord to improve the client as well.
 
-## Current Features
-- Every single features from official client is available ( Resource Swapper, Unlimited FPS, etc. )
-- May improves load time, and better memory managing 
+## Features
+- Every single features from official client is available ( Resource Swapper, Unlimited FPS, etc. ) 
 ---
 - Performance
 	- Accurate FPS limiter ( you can still prefer the original FPS limiter by setting this to 0 )
@@ -65,7 +67,7 @@ I'm also accepting bug reports, suggestions and feedbacks in our Discord.
 ## Running the Client
 
 ### Releases
-There are binary releases available. You can download the [latest release](https://github.com/Mixaz017/Custom-Krunker-Client/releases/latest) and start playing quickly.
+You can download the [latest release](https://github.com/Mixaz017/Custom-Krunker-Client/releases/latest).
 - Windows:
 	- `Custom-Krunker-Client-Setup-<version>.exe` - 32 & 64-bit installer
 	- `Custom-Krunker-Client-<version>.exe` - 32 & 64-bit portable executable
@@ -76,7 +78,7 @@ There are binary releases available. You can download the [latest release](https
 You don't have to download `.blockmap` or `.yml` files, because those files are released only for auto update purpose.
 
 ### Running from source code
-If your system doesn't support those released files, or you want to get latest version of the client, you can run the client by following the guide below: 
+If your system doesn't support those released files, or you want to get latest version of the client, you can run the client by following the guide below.  
 - Requirements for both methods
 	1. Install [Node.js](https://nodejs.org/en/download/).  
 	Versions above 9.0.0 should works fine. If you using `apt` to install Node.js, please note that apt may not work because apt provides very old version of Node.js. You can use [nvm](https://github.com/nvm-sh/nvm) to easily manage Node.js versions so it is highly recommended. You can check the version of Node by running `node -v`.
