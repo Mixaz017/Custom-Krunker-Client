@@ -1,6 +1,6 @@
 {
 	"name": "io.custom.krunker.desktop",
-	"version": "1.8.3-custom.3",
+	"version": "1.8.3-custom.2",
 	"description": "Customized Desktop Client For Krunker",
 	"author": "Mixaz",
 	"main": "app/main.js",
@@ -25,6 +25,6 @@
 		"dist": "electron-builder",
 		"postinstall": "electron-builder install-app-deps",
 		"release": "electron-builder",
-		"quick": "electron-builder --config=quick-build.yml"
+		"testbuild": "electron-builder --config=test-build.yml"
 	}
 }

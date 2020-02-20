@@ -27,7 +27,7 @@ class Utilities {
 				html: _ => {
 					return `<label class='switch'><input type='checkbox' onclick='window.utilities.setSetting("unlimitedFrames", this.checked);
 						alert("This setting requires a client restart to take effect.");'
-                        ${this.settings.unlimitedFrames.val ? 'checked' : ''}><span class='slider'></span></label>`;
+						${this.settings.unlimitedFrames.val ? 'checked' : ''}><span class='slider'></span></label>`;
 				},
 				set: (_, init) => {
 					if (!init) {
@@ -517,9 +517,9 @@ class Utilities {
 		if (window.hasOwnProperty("windows")) {
 			// FPS Limit
 			const requestAnimFrameOrig = requestAnimFrame
-			var lastTime = 0
+			let lastTime = 0
 			requestAnimFrame = function() {
-				if (utilities.settings.frameLimit.val > 0) {
+				if (utilities && utilities.settings.frameLimit.val > 0) {
 					while (performance.now() - lastTime < 1000 / utilities.settings.frameLimit.val) {}
 					lastTime = performance.now()
 				}
