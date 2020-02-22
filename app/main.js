@@ -78,9 +78,9 @@ if (!config.get("utilities_disableDiscordRPC", false)) {
 		DiscordRPC.register(consts.DISCORD_ID);
 		rpc = new DiscordRPC.Client({ transport: 'ipc' });
 		rpc.isConnected = false;
-	
+
 		rpc.on('error', console.error);
-	
+
 		rpc.login({ 'clientId': consts.DISCORD_ID })
 			.then(() => {
 				rpc.isConnected = true;

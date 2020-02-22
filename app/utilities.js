@@ -363,7 +363,7 @@ class Utilities {
 			},
 			dumpPath: {
 				name: "Dump Path",
-				val: consts.joinPath(remote.app.getPath("documents"), "KrunkerResourceDump"),
+				val: path.join(remote.app.getPath("documents"), "KrunkerResourceDump"),
 				html: () => "<span class='floatR'>| <a onclick='let dirPath = remote.dialog.showOpenDialogSync({properties: [\x22openDirectory\x22]}); if (dirPath && dirPath[0]) utilities.setSetting(\x22dumpPath\x22, dirPath[0])' class='menuLink'>Select</a> | <a onclick='window.utilities.openItem(window.utilities.settings.dumpPath.val || path.join(remote.app.getPath(\x22documents\x22), \x22KrunkerResourceDump\x22), true)' class='menuLink'>Open</a></span>" + generateSetting("url", "dumpPath", this, "Resource Dump Output Path")
 			},
 			debugMode: {
