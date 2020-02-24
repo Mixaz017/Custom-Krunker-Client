@@ -160,5 +160,27 @@ document.addEventListener("DOMContentLoaded", () => {
 		newUtilityCSS.innerHTML = `${config.get("utilities_customFontsCSSFix", true) ? consts.css.customFontsFix : ""}
 		${config.get("utilities_hideAds", true) ? consts.css.hideAds : ""}`
 		document.head.appendChild(newUtilityCSS)
+
+		// Jump to user
+		let userJumpInput = document.createElement("input")
+		userJumpInput.id = "userJump"
+		userJumpInput.placeholder = "Jump to user..."
+		userJumpInput.addEventListener("keydown", event => {
+			if (!event.isComposing && event.key == "Enter") {
+				location.search = `?p=profile&q=${event.target.value}`
+			}
+		})
+		navButtons.appendChild(userJumpInput)
+
+		// CSS for Social window
+		let socialCSS = document.createElement("style")
+		socialCSS.innerHTML = `#userJump {
+			width: 140px;
+			padding: 10px;
+			font-size: 20px;
+			border-radius: 8px;
+			border: none;
+		}`
+		document.head.appendChild(socialCSS)
 	}
 }, false);
