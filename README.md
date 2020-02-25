@@ -14,6 +14,9 @@ If you are interested and thinks that your skill is enough to maintain this clie
 
 I'm also accepting bug reports, suggestions and feedbacks in our Discord.
 
+Using [CClient](https://discord.gg/5ZMvrGT) is recommended over this client because the client is more stable and provides more actually useful features.
+Also the Cuffuffles, the developer of CClient, is a awesome guy
+
 ## Why this Client?
 - This client is meant to be a superior of the official client.
 - Many extra features available. You can suggest features you want in the Discord to improve the client as well.

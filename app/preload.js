@@ -44,7 +44,7 @@ const RichPresence = window.rp = isDiscordRPCEnabled ? {
 			}, 25000);
 		}
 	},
-		getGameInfo() {
+	getGameInfo() {
 		if (!(this.info && this.info.id) || this.isIdle() || !gameWindow.rpc.isConnected) return;
 		fetch('https://matchmaker.krunker.io/game-info?game=' + this.info.id)
 			.then(res => res.json())
@@ -53,17 +53,17 @@ const RichPresence = window.rp = isDiscordRPCEnabled ? {
 			})
 			.catch(console.warn);
 	},
-		isIdle() {
+	isIdle() {
 		return instructionHolder.innerText.includes('Try seeking a new game');
 	},
-		update() {
+	update() {
 		if (!gameWindow.rpc.isConnected) return;
 		if (location.href.isEditor()) return this.sendEditor();
 		if (location.href.isViewer()) return this.sendOther(3, 'browsing viewer');
 		if (location.href.isSocial()) return this.sendOther(2, 'browsing social');
 		if (location.href.isGame()) return this.isIdle() ? this.sendOther(0, 'idle') : this.sendGame();
 	},
-		sendEditor() {
+	sendEditor() {
 		let mapN = document.querySelectorAll('div[class="c"]')[0].firstElementChild.value;
 		let activity = {
 			largeImageKey: 'icon',
@@ -73,7 +73,7 @@ const RichPresence = window.rp = isDiscordRPCEnabled ? {
 		};
 		gameWindow.rpc.setActivity2(1, activity);
 	},
-		sendGame() {
+	sendGame() {
 		this.info = window.getGameActivity();
 		if (!this.info || !this.info.mode) return this.sendOther(0, 'in the menu');
 		let activity = {
@@ -86,7 +86,7 @@ const RichPresence = window.rp = isDiscordRPCEnabled ? {
 			activity.partyId = this.info.id;
 			activity.joinSecret = location.hostname + '|join|' + this.info.id;
 		}
-			if (this.info.class.index) {
+		if (this.info.class.index) {
 			activity.smallImageKey = 'icon_' + this.info.class.index;
 			activity.smallImageText = this.info.class.name;
 		}
@@ -99,17 +99,17 @@ const RichPresence = window.rp = isDiscordRPCEnabled ? {
 		activity.details = this.info.mode + " on " + this.info.map;
 		gameWindow.rpc.setActivity2(0, activity);
 	},
-		sendOther(win, txt) {
+	sendOther(win, txt) {
 		gameWindow.rpc.setActivity2(win, {
 			details: txt,
 			largeImageKey: 'icon',
 			instance: false
 		});
 	},
-		sendIgnore(user) {
+	sendIgnore(user) {
 		gameWindow.rpc.closeJoinRequest(user);
 	},
-		sendAccept(user, type, session, channel, message) {
+	sendAccept(user, type, session, channel, message) {
 		if (type != undefined) {
 			gameWindow.rpc.request('ACCEPT_ACTIVITY_INVITE', {
 				"user_id": user,
@@ -123,9 +123,9 @@ const RichPresence = window.rp = isDiscordRPCEnabled ? {
 
 	insertNotification(user, type, session, channel, message) {
 		if (this.gameInfo.length && this.gameInfo[2] == this.gameInfo[3] && type != undefined) return this.sendIgnore(user);
-		for (chatList.innerHTML += `<div class='chatItem'>${user.username} ${type == undefined ? 'wants to join':'invited you'} <span class='chatMsg'>
-        <input onclick='window.rp.sendAccept(${user.id}, ${type}, ${session}, ${channel}, ${message}); this.parentNode.innerHTML = "Accepted";' type='button' value='Accept' style='color: #9eeb56; border: none; background-color: #ffffff22; border-radius: 3px'>
-        <input onclick='window.rp.sendIgnore(${user.id}); this.parentNode.innerHTML = "Declined";' type='button' value='Decline' style='color: #eb5656; border: none; background-color: #ffffff22; border-radius: 3px'></span></div><br/>`; chatList.scrollHeight >= 250;) chatList.removeChild(chatList.childNodes[0])
+		for (chatList.innerHTML += `<div class='chatItem'>${user.username} ${type == undefined ? 'wants to join' : 'invited you'} <span class='chatMsg'>
+		<input onclick='window.rp.sendAccept(${user.id}, ${type}, ${session}, ${channel}, ${message}); this.parentNode.innerHTML = "Accepted";' type='button' value='Accept' style='color: #9eeb56; border: none; background-color: #ffffff22; border-radius: 3px'>
+		<input onclick='window.rp.sendIgnore(${user.id}); this.parentNode.innerHTML = "Declined";' type='button' value='Decline' style='color: #eb5656; border: none; background-color: #ffffff22; border-radius: 3px'></span></div><br/>`; chatList.scrollHeight >= 250;) chatList.removeChild(chatList.childNodes[0])
 	}
 } : null;
 

@@ -27,34 +27,34 @@ module.exports.PING_REGION_CACHE_KEY = "pingRegion4";
 
 module.exports.DISCORD_ID = '560173821533880322';
 
-String.prototype.isCode = function() {
+String.prototype.isCode = function () {
 	return module.exports.GAME_CODE_REGEX.test(this + '');
 };
 
-String.prototype.isGame = function() {
+String.prototype.isGame = function () {
 	return module.exports.GAME_REGEX.test(this + '');
 };
 
-String.prototype.isEditor = function() {
+String.prototype.isEditor = function () {
 	return module.exports.EDITOR_REGEX.test(this + '');
 };
 
-String.prototype.isViewer = function() {
+String.prototype.isViewer = function () {
 	return module.exports.VIEWER_REGEX.test(this + '');
 };
 
-String.prototype.isSocial = function() {
+String.prototype.isSocial = function () {
 	return module.exports.SOCIAL_REGEX.test(this + '');
 };
 
-String.prototype.isKrunker = function() {
+String.prototype.isKrunker = function () {
 	return module.exports.SITE_REGEX.test(this + '');
 };
 
 module.exports.joinPath = path.join
 
 module.exports.hexToRGB = hex => hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i,
-		(m, r, g, b) => '#' + r + r + g + g + b + b)
+	(m, r, g, b) => '#' + r + r + g + g + b + b)
 	.substring(1).match(/.{2}/g)
 	.map(x => parseInt(x, 16));
 

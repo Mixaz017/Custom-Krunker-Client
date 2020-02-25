@@ -1,136 +1,139 @@
 <html>
-	<style type="text/css">
-		html,
-		body {
-			padding: 0px;
-			overflow: hidden;
-			margin: 0px;
-		}
+<style type="text/css">
+	html,
+	body {
+		padding: 0px;
+		overflow: hidden;
+		margin: 0px;
+	}
 
-		@font-face {
-			font-family: 'GameFont';
-			src: url("fonts/krunker.ttf");
-		}
+	@font-face {
+		font-family: 'GameFont';
+		src: url("fonts/krunker.ttf");
+	}
 
-		* {
-			outline: none;
-			font-family: 'GameFont';
-			color: #353535;
-			user-select: none;
-		}
+	* {
+		outline: none;
+		font-family: 'GameFont';
+		color: #353535;
+		user-select: none;
+	}
 
-		#promptMenu {
-			background-color: #fff;
-			text-align: center;
-			padding: 10px;
-			position: absolute;
-			left: 0;
-			right: 0;
-			border-radius: 5px;
-			box-shadow: 0px 7px 0px 0px #a6a6a6;
-			-webkit-box-shadow: 0px 7px 0px 0px #a6a6a6;
-			-moz-box-shadow: 0px 7px 0px 0px #a6a6a6;
-		}
+	#promptMenu {
+		background-color: #fff;
+		text-align: center;
+		padding: 10px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		border-radius: 5px;
+		box-shadow: 0px 7px 0px 0px #a6a6a6;
+		-webkit-box-shadow: 0px 7px 0px 0px #a6a6a6;
+		-moz-box-shadow: 0px 7px 0px 0px #a6a6a6;
+	}
 
-		#promptText {
-			word-wrap: break-word;
-		}
+	#promptText {
+		word-wrap: break-word;
+	}
 
-		input {
-			top: 100px;
-			background-color: #eee;
-			border: none;
-			border-radius: 3px;
-			font-size: 14px;
-			padding: 4px;
-			width: 250px;
-		}
+	input {
+		top: 100px;
+		background-color: #eee;
+		border: none;
+		border-radius: 3px;
+		font-size: 14px;
+		padding: 4px;
+		width: 250px;
+	}
 
-		select {
-			top: 100px;
-			background-color: #eee;
-			border: none;
-			border-radius: 3px;
-			font-size: 14px;
-			padding: 4px;
-			width: 250px;
-		}
+	select {
+		top: 100px;
+		background-color: #eee;
+		border: none;
+		border-radius: 3px;
+		font-size: 14px;
+		padding: 4px;
+		width: 250px;
+	}
 
-		.actionButton {
-			color: #fff !important;
-			margin-right: 5px;
-			margin-left: 5px;
-			background-color: #2196F3;
-			padding: 6px;
-			font-size: 12px;
-			display: inline-block;
-			cursor: pointer;
-			border-radius: 3px;
-		}
+	.actionButton {
+		color: #fff !important;
+		margin-right: 5px;
+		margin-left: 5px;
+		background-color: #2196F3;
+		padding: 6px;
+		font-size: 12px;
+		display: inline-block;
+		cursor: pointer;
+		border-radius: 3px;
+	}
 
-		.actionButton:active {
-			background-color: #666;
-		}
+	.actionButton:active {
+		background-color: #666;
+	}
 
-		.lineSpacing {
-			padding-bottom: 12px;
-		}
-	</style>
-	<head></head>
-	<body>
-		<div id='promptMenu'>
-			<div class='lineSpacing'>
-				<a id="promptText">Question</a>
-			</div>
+	.lineSpacing {
+		padding-bottom: 12px;
+	}
+</style>
 
-			<div id="typeFrame" class='lineSpacing'>
-				<select id="promptInput">
-					<option value="index.html">Homepage</option>
-					<option value="social.html">Social</option>
-					<option value="viewer.html">Viewer</option>
-					<option value="editor.html">Editor</option>
-				</select><br>
-			</div>
+<head></head>
 
-			<div class='lineSpacing'>
-				<div class="actionButton" href='javascript:;' onclick="submit()">Submit</div>
-				<div class="actionButton" href='javascript:;' onclick="cancel()">Cancel</div>
-			</div>
+<body>
+	<div id='promptMenu'>
+		<div class='lineSpacing'>
+			<a id="promptText">Question</a>
 		</div>
-	</body>
-	<script>
-		const electron = require('electron');
-		const { ipcRenderer, remote } = electron;
 
-		ipcRenderer.on('text', (event, raw) => {
-			const opt = JSON.parse(raw);
-			promptText.innerText = `${opt.data}`;
-			switch (opt.type) {
-				case 'select':
-					typeFrame.innerHTML = `
+		<div id="typeFrame" class='lineSpacing'>
+			<select id="promptInput">
+				<option value="index.html">Homepage</option>
+				<option value="social.html">Social</option>
+				<option value="viewer.html">Viewer</option>
+				<option value="editor.html">Editor</option>
+			</select><br>
+		</div>
+
+		<div class='lineSpacing'>
+			<div class="actionButton" href='javascript:;' onclick="submit()">Submit</div>
+			<div class="actionButton" href='javascript:;' onclick="cancel()">Cancel</div>
+		</div>
+	</div>
+</body>
+<script>
+	const electron = require('electron');
+	const { ipcRenderer, remote } = electron;
+
+	ipcRenderer.on('text', (event, raw) => {
+		const opt = JSON.parse(raw);
+		promptText.innerText = `${opt.data}`;
+		switch (opt.type) {
+			case 'select':
+				typeFrame.innerHTML = `
 						<select id="promptInput">
 							<option value=" ">Homepage</option>
 							<option value="social.html">Social</option>
 							<option value="viewer.html">Viewer</option>
 							<option value="editor.html">Editor</option>
 						</select><br>`
-					break;
-				case 'text':
-				default:
-					typeFrame.innerHTML = '<input id="promptInput" placeholder="Enter Input"><br>';
-					break;
-			}
-			remote.getCurrentWindow().setBounds({
-				height: promptMenu.getBoundingClientRect().height + 7
-			});
+				break;
+			case 'text':
+			default:
+				typeFrame.innerHTML = '<input id="promptInput" placeholder="Enter Input"><br>';
+				break;
+		}
+		remote.getCurrentWindow().setBounds({
+			height: promptMenu.getBoundingClientRect().height + 7
 		});
+	});
 
-		const cancel = () => {
-			window.close();
-		}
-		const submit = () => {
-			ipcRenderer.send('prompt-response', promptInput.value);
-			window.close();
-		}
-	</script>
+	const cancel = () => {
+		window.close();
+	}
+	const submit = () => {
+		ipcRenderer.send('prompt-response', promptInput.value);
+		window.close();
+	}
+</script>
+
 </html>

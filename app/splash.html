@@ -1,91 +1,94 @@
 <html>
-	<head>
-		<title>Krunker</title>
-		<style id="splash">
-			body {
-				pointer-events: none;
-				text-align: center;
-				z-index: 1;
-				background-image: url("imgs/splash.png");
-				background-size: contain;
-				border: 6px solid rgba(0, 0, 0, 0.2);
-				border-radius: 6px;
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				margin: 0;
-			}
 
-			@font-face {
-				font-family: 'GameFont';
-				src: url('fonts/krunker.ttf');
-			}
+<head>
+	<title>Krunker</title>
+	<style id="splash">
+		body {
+			pointer-events: none;
+			text-align: center;
+			z-index: 1;
+			background-image: url("imgs/splash.png");
+			background-size: contain;
+			border: 6px solid rgba(0, 0, 0, 0.2);
+			border-radius: 6px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: 0;
+		}
 
-			* {
-				outline: none;
-				font-family: 'GameFont';
-				font-size: 12px;
-				user-select: none;
+		@font-face {
+			font-family: 'GameFont';
+			src: url('fonts/krunker.ttf');
+		}
 
-				text-shadow:
-					-1px -1px 0 #202020,
-					1px -1px 0 #202020,
-					-1px 1px 0 #202020,
-					1px 1px 0 #202020,
-					-2px -2px 0 #202020,
-					2px -2px 0 #202020,
-					-2px 2px 0 #202020,
-					2px 2px 0 #202020;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="progress" style="position:absolute;color:white;bottom:48px;left:10px;font-Size:16px;"></div>
-		<div id="update" style="position:absolute;color:white;bottom:10px;left:10px;font-Size:20px;"></div>
-		<div id="curr" style="position:absolute;color:#a280ff;bottom:10px;right:10px;font-Size:16px;"></div>
-		<script>
-			const Store = require('electron-store'),
-				config = new Store();
-			// Find a internal CSS rule of the background image and replace it
-			if (config.get("utilities_customSplashBackground")) {
-				let targetStyle = Array.from(Array.from(document.styleSheets).find(styleSheet => styleSheet.ownerNode.id == "splash").cssRules).find(rule => rule.selectorText == "body").style
-				targetStyle.backgroundImage = `url("${config.get("utilities_customSplashBackground").replace(/\\/g, "/")}"), ${targetStyle.backgroundImage}`
-			}
-			// Same thing with font
-			if (config.get("utilities_customSplashFont")) {
-				let targetStyle = Array.from(Array.from(document.styleSheets).find(styleSheet => styleSheet.ownerNode.id == "splash").cssRules).find(rule => rule.type == 5).style
-				targetStyle.src = `url("${config.get("utilities_customSplashFont").replace(/\\/g, "/")}"), ${targetStyle.src}`
-			}
+		* {
+			outline: none;
+			font-family: 'GameFont';
+			font-size: 12px;
+			user-select: none;
 
-			const { ipcRenderer, remote } = require('electron');
-			curr.innerHTML = 'v' + remote.app.getVersion();
+			text-shadow:
+				-1px -1px 0 #202020,
+				1px -1px 0 #202020,
+				-1px 1px 0 #202020,
+				1px 1px 0 #202020,
+				-2px -2px 0 #202020,
+				2px -2px 0 #202020,
+				-2px 2px 0 #202020,
+				2px 2px 0 #202020;
+		}
+	</style>
+</head>
 
-			ipcRenderer.on('checking-for-update', () => {
-				update.innerHTML = "Checking for update...";
-			});
-			ipcRenderer.on('update-available', (evt, info) => {
-				update.innerHTML = "New update v" + info.version + " found";
-			});
-			ipcRenderer.on('update-not-available', (evt, info) => {
-				update.innerHTML = "No update found.";
-			});
-			ipcRenderer.on('download-progress', (evt, info) => {
-				console.log(info);
-				update.innerHTML = `Downloading... ${Math.floor(info.percent)}%`;
-				progress.innerHTML = `${Math.floor(info.bytesPerSecond / 1000)} kB/s`;
-			});
-			ipcRenderer.on('update-downloaded', (evt, info) => {
-				update.innerHTML = "Installing v" + info.version;
-				progress.innerHTML = ""
-			});
-			ipcRenderer.on('update-error', (evt, info) => {
-				console.log(evt, info);
-				update.innerHTML = "Update failed. Try again next time";
-				progress.innerHTML = ""
-			});
-			ipcRenderer.on('log', console.log);
-		</script>
-	</body>
+<body>
+	<div id="progress" style="position:absolute;color:white;bottom:48px;left:10px;font-Size:16px;"></div>
+	<div id="update" style="position:absolute;color:white;bottom:10px;left:10px;font-Size:20px;"></div>
+	<div id="curr" style="position:absolute;color:#a280ff;bottom:10px;right:10px;font-Size:16px;"></div>
+	<script>
+		const Store = require('electron-store'),
+			config = new Store();
+		// Find a internal CSS rule of the background image and replace it
+		if (config.get("utilities_customSplashBackground")) {
+			let targetStyle = Array.from(Array.from(document.styleSheets).find(styleSheet => styleSheet.ownerNode.id == "splash").cssRules).find(rule => rule.selectorText == "body").style
+			targetStyle.backgroundImage = `url("${config.get("utilities_customSplashBackground").replace(/\\/g, "/")}"), ${targetStyle.backgroundImage}`
+		}
+		// Same thing with font
+		if (config.get("utilities_customSplashFont")) {
+			let targetStyle = Array.from(Array.from(document.styleSheets).find(styleSheet => styleSheet.ownerNode.id == "splash").cssRules).find(rule => rule.type == 5).style
+			targetStyle.src = `url("${config.get("utilities_customSplashFont").replace(/\\/g, "/")}"), ${targetStyle.src}`
+		}
+
+		const { ipcRenderer, remote } = require('electron');
+		curr.innerHTML = 'v' + remote.app.getVersion();
+
+		ipcRenderer.on('checking-for-update', () => {
+			update.innerHTML = "Checking for update...";
+		});
+		ipcRenderer.on('update-available', (evt, info) => {
+			update.innerHTML = "New update v" + info.version + " found";
+		});
+		ipcRenderer.on('update-not-available', (evt, info) => {
+			update.innerHTML = "No update found.";
+		});
+		ipcRenderer.on('download-progress', (evt, info) => {
+			console.log(info);
+			update.innerHTML = `Downloading... ${Math.floor(info.percent)}%`;
+			progress.innerHTML = `${Math.floor(info.bytesPerSecond / 1000)} kB/s`;
+		});
+		ipcRenderer.on('update-downloaded', (evt, info) => {
+			update.innerHTML = "Installing v" + info.version;
+			progress.innerHTML = ""
+		});
+		ipcRenderer.on('update-error', (evt, info) => {
+			console.log(evt, info);
+			update.innerHTML = "Update failed. Try again next time";
+			progress.innerHTML = ""
+		});
+		ipcRenderer.on('log', console.log);
+	</script>
+</body>
+
 </html>

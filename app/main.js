@@ -1,6 +1,6 @@
 require('v8-compile-cache');
 require("./log.js")
-const { BrowserWindow, app, shell, Menu, ipcMain, net} = require('electron');
+const { BrowserWindow, app, shell, Menu, ipcMain, net } = require('electron');
 const shortcut = require('electron-localshortcut');
 const consts = require('./constants.js');
 const url = require('url');
@@ -26,7 +26,7 @@ let gameWindow = null,
 	})
 });
 
-const autoUpdateType = (RegExp(`^(${Object.keys(consts.autoUpdateTypes).join("|")})$`).exec(consts.AUTO_UPDATE_TYPE || config.get("utilities_autoUpdateType")) || {input: "download"}).input
+const autoUpdateType = (RegExp(`^(${Object.keys(consts.autoUpdateTypes).join("|")})$`).exec(consts.AUTO_UPDATE_TYPE || config.get("utilities_autoUpdateType")) || { input: "download" }).input
 consts.DEBUG = consts.DEBUG || config.get("utilities_debugMode", false)
 app.userAgentFallback = app.userAgentFallback.replace(/(?<=io).custom(?=.krunker.desktop)|-custom\.\d+/g, "")
 
@@ -84,7 +84,7 @@ if (!config.get("utilities_disableDiscordRPC", false)) {
 		rpc.login({ 'clientId': consts.DISCORD_ID })
 			.then(() => {
 				rpc.isConnected = true;
-				rpc.setActivity2 = function(win, obj) {
+				rpc.setActivity2 = function (win, obj) {
 					if (current == win) rpc.setActivity(obj);
 				};
 				rpc.on('RPC_MESSAGE_RECEIVED', (event) => {
@@ -103,7 +103,7 @@ if (!config.get("utilities_disableDiscordRPC", false)) {
 					if (!gameWindow) return;
 					gameWindow.webContents.send('ACTIVITY_INVITE', event);
 				});
-					rpc.subscribe('ACTIVITY_JOIN_REQUEST', (user) => {
+				rpc.subscribe('ACTIVITY_JOIN_REQUEST', (user) => {
 					if (!gameWindow) return;
 					gameWindow.webContents.send('ACTIVITY_JOIN_REQUEST', user);
 				});
@@ -130,7 +130,7 @@ const initGameWindow = () => {
 	gameWindow.rpc = rpc;
 
 	let swapFolder = consts.joinPath(app.getPath('documents'), '/KrunkerResourceSwapper');
-	try {fs.mkdir(swapFolder, { recursive: true }, e => {});}catch(e){};
+	try { fs.mkdir(swapFolder, { recursive: true }, e => { }); } catch (e) { };
 	let swap = { filter: { urls: [] }, files: {} };
 	const allFilesSync = (dir, fileList = []) => {
 		fs.readdirSync(dir).forEach(file => {
@@ -452,7 +452,7 @@ const initUpdater = () => {
 	let updateCheckFallback = null;
 	autoUpdater.on('checking-for-update', (info) => {
 		splashWindow.webContents.send('checking-for-update');
-		updateCheckFallback = setTimeout(function() { 
+		updateCheckFallback = setTimeout(function () {
 			splashWindow.webContents.send('update-not-available', info);
 			setTimeout(() => initGameWindow(), 1000);
 		}, 15000);
@@ -505,7 +505,7 @@ const initShortcuts = () => {
 		hardRefresh: {
 			key: 'Shift+F5',
 			press: () => gameWindow.webContents.reloadIgnoringCache()
-		},		
+		},
 		fullscreen: {
 			key: 'F11',
 			press: () => {

@@ -63,7 +63,7 @@ class Utilities {
 			},
 			customFontsCSSFix: {
 				name: "Fix CSS for Custom Fonts",
-				pre: "<div class='setHed customUtility'>Patch</div>",	
+				pre: "<div class='setHed customUtility'>Patch</div>",
 				val: true,
 				html: () => generateSetting("checkbox", "customFontsCSSFix", this)
 			},
@@ -96,7 +96,7 @@ class Utilities {
 							}).join("")
 						}
 					})
-				} 
+				}
 			},
 			rememberSearch: {
 				name: "Remember Server Search Keywords",
@@ -283,7 +283,7 @@ class Utilities {
 						this.settings.customCSS.resources.css.rel = "stylesheet"
 						document.head.appendChild(this.settings.customCSS.resources.css)
 					}
-					
+
 				}
 			},
 			customSplashBackground: {
@@ -336,7 +336,7 @@ class Utilities {
 						this.settings.exportActivity.resources.writeActivity(config.get("utilities_exportActivityString", "${id}"))
 					}, 1000);
 					else clearInterval(this.settings.exportActivity.resources.intervalId)
-				} 
+				}
 			},
 			exportActivityPath: {
 				name: "Game Status Export Path",
@@ -374,7 +374,7 @@ class Utilities {
 			}
 		};
 		const inject = () => {
-			window.windows[0].getCSettings = function() { // WILL ONLY WORK FOR 1.8.3+
+			window.windows[0].getCSettings = function () { // WILL ONLY WORK FOR 1.8.3+
 				var tmpHTML = "";
 				for (var key in window.utilities.settings) {
 					if (window.utilities.settings[key].noShow) continue;
@@ -400,10 +400,10 @@ class Utilities {
 		function generateSetting(type, name, object, extra, autoSave = true) {
 			switch (type) {
 				case 'checkbox': return `<label class="switch"><input type="checkbox" ${autoSave ? `onclick="window.utilities.setSetting('${name}', this.checked)"` : ""} ${object.settings[name]['val'] ? 'checked' : ''}><span class="slider"></span></label>`;
-            	case 'slider': return `<input type="number" class="sliderVal" id="slid_input_utilities_${name}"\nmin="${object.settings[name]['min']}" max="${object.settings[name]['max']}" value="${object.settings[name]['val']}" ${autoSave ? `onkeypress="window.delayExecuteClient(\x27${name}\x27, this)"` : ""} style="border-width:0px"/>\n<div class="slidecontainer">\n<input type="range" id="slid_utilities_${name}" min="${object.settings[name]['min']}" max="${object.settings[name]['max']}" step="${object.settings[name]['step']}"\nvalue="${object.settings[name]['val']}" class="sliderM" ${autoSave ? `oninput="window.utilities.setSetting(\x27${name}\x27, this.value)"`: ""}></div>`;
-            	case 'select' :
-                	let temp = `<select ${autoSave ? `onchange="window.utilities.setSetting(\x27${name}\x27, this.value)"` : ""} class="inputGrey2">`;
-                	for (let option in extra) temp += '<option value="' + option + '" ' + (option == object.settings[name]['val'] ? 'selected' : '') + '>' + extra[option] + '</option>';
+				case 'slider': return `<input type="number" class="sliderVal" id="slid_input_utilities_${name}"\nmin="${object.settings[name]['min']}" max="${object.settings[name]['max']}" value="${object.settings[name]['val']}" ${autoSave ? `onkeypress="window.delayExecuteClient(\x27${name}\x27, this)"` : ""} style="border-width:0px"/>\n<div class="slidecontainer">\n<input type="range" id="slid_utilities_${name}" min="${object.settings[name]['min']}" max="${object.settings[name]['max']}" step="${object.settings[name]['step']}"\nvalue="${object.settings[name]['val']}" class="sliderM" ${autoSave ? `oninput="window.utilities.setSetting(\x27${name}\x27, this.value)"` : ""}></div>`;
+				case 'select':
+					let temp = `<select ${autoSave ? `onchange="window.utilities.setSetting(\x27${name}\x27, this.value)"` : ""} class="inputGrey2">`;
+					for (let option in extra) temp += '<option value="' + option + '" ' + (option == object.settings[name]['val'] ? 'selected' : '') + '>' + extra[option] + '</option>';
 					return temp += '</select>';
 				default: return `<input type="${type}" name="${type}" id="slid_utilities_${name}"\n${'color' == type ? 'style="float:right;margin-top:5px"' : `class="inputGrey2" placeholder="${extra}"`}\nvalue="${object.settings[name]['val']}" ${autoSave ? `oninput="window.utilities.setSetting(\x27${name}\x27, this.value)"` : ""}/>`;
 			}
@@ -491,14 +491,14 @@ class Utilities {
 		remote.shell.showItemInFolder(path.resolve(fullpath))
 	}
 
-	generateStyle (text, id) {
+	generateStyle(text, id) {
 		let newElement = document.createElement("style")
 		newElement.id = id
 		newElement.innerHTML = text
 		return newElement
 	}
 
-	flattenObject (obj, prefix = '') {
+	flattenObject(obj, prefix = '') {
 		return Object.keys(obj).reduce((acc, cur) => {
 			const pre = prefix.length ? prefix + '.' : ''
 			if (obj[cur] && obj[cur].constructor.name == "Object") Object.assign(acc, this.flattenObject(obj[cur], pre + cur))
@@ -518,9 +518,9 @@ class Utilities {
 			// FPS Limit
 			const requestAnimFrameOrig = requestAnimFrame
 			let lastTime = 0
-			requestAnimFrame = function() {
+			requestAnimFrame = function () {
 				if (utilities && utilities.settings.frameLimit.val > 0) {
-					while (performance.now() - lastTime < 1000 / utilities.settings.frameLimit.val) {}
+					for (let i = 0; i < Number.MAX_SAFE_INTEGER && performance.now() - lastTime < 1000 / utilities.settings.frameLimit.val; i++) { }
 					lastTime = performance.now()
 				}
 				requestAnimFrameOrig(...arguments)
@@ -538,13 +538,13 @@ class Utilities {
 		window.path = require("path")
 		window.timeouts = {}
 		window.delayExecuteClient = function (name, object, delay = 600) {
-            return clearTimeout(timeouts[name]), timeouts[name] = setTimeout(function () {
-                window.utilities.setSetting(name, object['value']);
-            }, delay), true;
+			return clearTimeout(timeouts[name]), timeouts[name] = setTimeout(function () {
+				window.utilities.setSetting(name, object['value']);
+			}, delay), true;
 		};
 		this.waitGameInit()
-		
-		
+
+
 	}
 }
 
