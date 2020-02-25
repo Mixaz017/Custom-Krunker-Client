@@ -1,5 +1,5 @@
 require("./log.js")
-const { remote, ipcRenderer } = require('electron');
+const { clipboard, remote, ipcRenderer } = require('electron');
 const gameWindow = remote.getCurrentWindow();
 const consts = require('./constants.js');
 const Store = require('electron-store');
@@ -182,5 +182,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			border: none;
 		}`
 		document.head.appendChild(socialCSS)
+
+		// Copy URL
+		document.addEventListener("keydown", event => {
+			if (event.key == "l" && event.ctrlKey) clipboard.writeText(location.href)
+		})
 	}
 }, false);
