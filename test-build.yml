@@ -2,14 +2,22 @@ appId: io.custom.krunker.desktop
 productName: 'Custom Krunker Client (Test Build)'
 win:
   target:
-    # -
-    #   target: nsis
-    #   arch:
-    #     - x64
+    -
+      target: nsis
+      arch:
+        - x64
     -
       target: portable
       arch:
         - x64
+linux:
+  target:
+    -
+      target: appImage
+      arch:
+        - x64
+        - ia32
+  category: game
 nsis:
   oneClick: false
   perMachine: true
