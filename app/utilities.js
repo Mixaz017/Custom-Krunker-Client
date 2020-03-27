@@ -107,21 +107,9 @@ class Utilities {
 					}
 				}
 			},
-			ammoDisplayBackgroundOpacity: {
-				name: "Ammo Display Background Opacity",
-				pre: "<div class='setHed customUtility'>Interface Tweak</div>",
-				val: 0.3,
-				min: 0,
-				max: 1,
-				step: 0.01,
-				html: () => generateSetting("slider", "ammoDisplayBackgroundOpacity", this),
-				set: (value, init) => {
-					if (init) document.addEventListener("DOMContentLoaded", () => ammoDisplay.style.backgroundColor = `rgba(0,0,0,${value})`)
-					else ammoDisplay.style.backgroundColor = `rgba(0,0,0,${value})`
-				}
-			},
 			scopeOffsetX: {
 				name: "Scope X Offset",
+				pre: "<div class='setHed customUtility'>Interface Tweak</div>",
 				val: "0%",
 				html: () => generateSetting("text", "scopeOffsetX", this, "Scope X Offset CSS Value"),
 				set: value => aimRecticle.style.transform = `translate(${value}, ${this.settings.scopeOffsetY.val})`
@@ -200,6 +188,24 @@ class Utilities {
 				step: 0.01,
 				html: () => generateSetting("slider", "overlayOpacity", this),
 				set: value => window["game-overlay"].style.opacity = value
+			},
+			ammoDisplayBackgroundOpacity: {
+				name: "Ammo Display Background Opacity",
+				val: 0.3,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "ammoDisplayBackgroundOpacity", this),
+				set: value => ammoDisplay.style.backgroundColor = `rgba(0,0,0,${value})`
+			},
+			weaponDisplayOpacity: {
+				name: "Weapon Display Opacity",
+				val: 1,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "weaponDisplayOpacity", this),
+				set: value => weapDisplay.style.opacity = value
 			},
 			reloadMessageOpacity: {
 				name: "Reload Message Opacity",
@@ -320,7 +326,7 @@ class Utilities {
 						let activity = null
 						try {
 							activity = window.getGameActivity()
-							let fullpath = config.get("utilities_exportActivityPath", path.join(remote.app.getPath("appData"), remote.app.name, "activity.txt"))
+							let fullpath = config.get("utilities_exportActivityPath", path.join(remote.app.getPath("appData"), remote.app.getName(), "activity.txt"))
 							if (!fs.existsSync(fullpath)) {
 								!fs.existsSync(path.dirname(fullpath)) && fs.mkdirSync(path.dirname(fullpath))
 							}
@@ -337,7 +343,7 @@ class Utilities {
 			},
 			exportActivityPath: {
 				name: "Game Status Export Path",
-				val: path.join(remote.app.getPath("appData"), remote.app.name, "activity.txt"),
+				val: path.join(remote.app.getPath("appData"), remote.app.getName(), "activity.txt"),
 				html: () => "<span class='floatR'>| <a onclick='window.utilities.openItem(window.utilities.settings.exportActivityPath.val || \x22./activity.txt\x22)' class='menuLink'>Open</a></span>" + generateSetting("url", "exportActivityPath", this, "Game Activity Export Path")
 			},
 			exportActivityString: {
@@ -387,7 +393,7 @@ class Utilities {
 				  |
 				  <a onclick='window.utilities.relaunchClient()' class='menuLink'>Relaunch Client</a>
 				  |
-				  <a onclick='remote.shell.openItem(path.join(remote.app.getPath("appData"), remote.app.name))' class='menuLink'>Open appData</a>
+				  <a onclick='remote.shell.openItem(path.join(remote.app.getPath("appData"), remote.app.getName()))' class='menuLink'>Open appData</a>
 				  |
 				  <a onclick='remote.shell.openItem(path.join(remote.app.getPath("documents"), "/KrunkerResourceSwapper"), true)' class='menuLink'>Open Resource Swapper<\a>
 	           `;
