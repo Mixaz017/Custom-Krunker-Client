@@ -465,13 +465,13 @@ class Utilities {
 	}
 
 	// Newer function
-	setSetting(t, e) {
-		this.settings[t].val = e;
-		config.set(`utilities_${t}`, e);
-		if (document.getElementById(`slid_utilities_${t}`)) document.getElementById(`slid_utilities_${t}`).value = e;
-		if (document.getElementById(`slid_input_utilities_${t}`)) document.getElementById(`slid_input_utilities_${t}`).value = e;
+	setSetting(name, value) {
+		this.settings[name].val = value;
+		config.set(`utilities_${name}`, value);
+		if (document.getElementById(`slid_utilities_${name}`)) document.getElementById(`slid_utilities_${name}`).value = value;
+		if (document.getElementById(`slid_input_utilities_${name}`)) document.getElementById(`slid_input_utilities_${name}`).value = value;
 
-		if (this.settings[t].set) this.settings[t].set(e);
+		if (this.settings[name].set) this.settings[name].set(value);
 	}
 
 	fixMenuSettings() {

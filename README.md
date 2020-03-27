@@ -82,6 +82,8 @@ You don't have to download `.blockmap` or `.yml` files, because those files are 
 
 ### Running from source code
 If your system doesn't support those released files, or you want to get latest version of the client, you can run the client by following the guide below.  
+**Note that Mac is NOT officially supported, but the tutorial is here just because you can.**  
+**Expect some things may not work as intended on Mac.**
 - Requirements for both methods
 	1. Install [Node.js](https://nodejs.org/en/download/).  
 	Versions above 9.0.0 should works fine. If you using `apt` to install Node.js, please note that apt may not work because apt provides very old version of Node.js. You can use [nvm](https://github.com/nvm-sh/nvm) to easily manage Node.js versions so it is highly recommended. You can check the version of Node by running `node -v`.
@@ -90,7 +92,7 @@ If your system doesn't support those released files, or you want to get latest v
 - Build method ( recommended )  
 	With this method, you can build executable files like `.exe`.
 	1. Open CLI and run `npm i electron-builder -g`. This command should install `electron-builder` module globally.
-	2. Run `electron-builder -c.win="" -c.mac="" -c.linux=""`. The executable file will be created in `dist` directory.
+	2. Run `electron-builder -c.win="" -c.mac="" -c.linux=""`. **If this command shows errors, please run the command with administrator permission (Run as administrator in Windows, prefix the command with `sudo` (`sudo electron-builder -c.win="" -c.mac="" -c.linux=""`) in Mac/Linux )** The executable file will be created in `dist` directory.
 	3. Run the executable file in `dist` directory.
 - No build method  
 	This method simply launches the client directly, without building. You have to do this method every time you want to launch the client if you prefer this method.
