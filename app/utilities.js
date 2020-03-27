@@ -67,21 +67,6 @@ class Utilities {
 				val: true,
 				html: () => generateSetting("checkbox", "customFontsCSSFix", this)
 			},
-			/* preventAFK: {
-				name: "Prevent AFK Kick",
-				pre: "<div class='setHed customUtility'>General Tweak</div>",
-				val: false,
-				html: () => generateSetting("checkbox", "preventAFK", this),
-				resources: {
-					intervalId: null
-				},
-				set: (value, init)=> {
-					if (value) {
-						if (!init) this.settings.preventAFK.resources.intervalId = setInterval(() => window.dispatchEvent(new KeyboardEvent("keydown")), 60000)
-					}
-					else if (!init) clearInterval(this.settings.preventAFK.resources.intervalId)
-				}
-			}, */
 			chatSpecialChars: {
 				name: "Chat Special Characters",
 				pre: "<div class='setHed customUtility'>General Tweak</div>",
@@ -122,9 +107,21 @@ class Utilities {
 					}
 				}
 			},
+			ammoDisplayBackgroundOpacity: {
+				name: "Ammo Display Background Opacity",
+				pre: "<div class='setHed customUtility'>Interface Tweak</div>",
+				val: 0.3,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "ammoDisplayBackgroundOpacity", this),
+				set: (value, init) => {
+					if (init) document.addEventListener("DOMContentLoaded", () => ammoDisplay.style.backgroundColor = `rgba(0,0,0,${value})`)
+					else ammoDisplay.style.backgroundColor = `rgba(0,0,0,${value})`
+				}
+			},
 			scopeOffsetX: {
 				name: "Scope X Offset",
-				pre: "<div class='setHed customUtility'>Interface Tweak</div>",
 				val: "0%",
 				html: () => generateSetting("text", "scopeOffsetX", this, "Scope X Offset CSS Value"),
 				set: value => aimRecticle.style.transform = `translate(${value}, ${this.settings.scopeOffsetY.val})`
