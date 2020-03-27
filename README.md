@@ -70,7 +70,8 @@ Also Cuffuffles, the developer of CClient, is a awesome guy
 ## Running the Client
 
 ### Releases
-You can download the [latest release](https://github.com/Mixaz017/Custom-Krunker-Client/releases/latest).
+Releases are prebuilt binaries, these are not always latest but one of the easiest way to get the client.  
+You can download them from the [release page](https://github.com/Mixaz017/Custom-Krunker-Client/releases/latest).
 - Windows:
 	- `Custom-Krunker-Client-Setup-<version>.exe` - 32 & 64-bit installer
 	- `Custom-Krunker-Client-<version>.exe` - 32 & 64-bit portable executable
