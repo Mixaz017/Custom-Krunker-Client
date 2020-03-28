@@ -189,6 +189,33 @@ class Utilities {
 				html: () => generateSetting("slider", "overlayOpacity", this),
 				set: value => window["game-overlay"].style.opacity = value
 			},
+			oldLeaderboardBackgroundOpacity: {
+				name: "Old Scoreboard Background Opacity",
+				val: 0.2,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "oldLeaderboardBackgroundOpacity", this),
+				set: value => leaderDisplay.style.backgroundColor = `rgba(0,0,0,${value})`
+			},
+			newLeaderboardBackgroundOpacity: {
+				name: "New Scoreboard Background Opacity",
+				val: 0.7,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "newLeaderboardBackgroundOpacity", this),
+				set: value => leaderContainerD.style.backgroundColor = `rgba(0,0,0,${value})`
+			},
+			countersBackgroundOpacity: {
+				name: "Counters Background Opacity",
+				val: 0.2,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "countersBackgroundOpacity", this),
+				set: value => Array.from(document.querySelector('.topRightCounters').children).forEach(counter => counter.style.backgroundColor = `rgba(0,0,0,${value})`)
+			},
 			ammoDisplayBackgroundOpacity: {
 				name: "Ammo Display Background Opacity",
 				val: 0.3,
@@ -206,6 +233,24 @@ class Utilities {
 				step: 0.01,
 				html: () => generateSetting("slider", "weaponDisplayOpacity", this),
 				set: value => weapDisplay.style.opacity = value
+			},
+			timerBackgroundOpacity: {
+				name: "Timer Background Opacity",
+				val: 0.3,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "timerBackgroundOpacity", this),
+				set: value => timerDisplay.style.backgroundColor = `rgba(0,0,0,${value})`
+			},
+			teamScoresBackgroundOpacity: {
+				name: "Team Scores Background Opacity",
+				val: 0.3,
+				min: 0,
+				max: 1,
+				step: 0.01,
+				html: () => generateSetting("slider", "teamScoresBackgroundOpacity", this),
+				set: value => teamScores.style.backgroundColor = `rgba(0,0,0,${value})`
 			},
 			reloadMessageOpacity: {
 				name: "Reload Message Opacity",
