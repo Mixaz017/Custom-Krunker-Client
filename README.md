@@ -69,12 +69,6 @@ Also Cuffuffles, the developer of CClient, is a awesome guy
 ### Releases
 Releases are prebuilt binaries, these are not always latest but one of the easiest way to get the client.  
 You can download them from the [release page](https://github.com/Mixaz017/Custom-Krunker-Client/releases/latest).
-- Windows:
-	- `Custom-Krunker-Client-Setup-<version>.exe` - 32 & 64-bit installer
-	- `Custom-Krunker-Client-<version>.exe` - 32 & 64-bit portable executable
-- Linux:
-	- `Custom-Krunker-Client-<version>.AppImage` - 64-bit portable executable
-	- `Custom-Krunker-Client-<version>-i386.AppImage` - 32-bit portable executable
 
 You don't have to download `.blockmap` or `.yml` files, because those files are released only for auto update purpose.
 

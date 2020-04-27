@@ -1,33 +1,33 @@
 appId: io.custom.krunker.desktop
 productName: 'Custom Krunker Client'
 win:
+  artifactName: ${productName}-v${version}-portable-${os}-${arch}.${ext}
   target:
-    -
-      target: nsis
+    - target: nsis
       arch:
         - x64
         - ia32
-    -
-      target: portable
+    - target: portable
       arch:
         - x64
         - ia32
 mac:
+  artifactName: ${productName}-v${version}-portable-${os}-${arch}.${ext}
   target:
-    -
-      target: dmg
+    - target: dmg
       arch:
         - x64
         - ia32
 linux:
+  artifactName: ${productName}-v${version}-portable-${os}-${arch}.${ext}
   target:
-    -
-      target: appImage
+    - target: appImage
       arch:
         - x64
         - ia32
   category: game
 nsis:
+  artifactName: ${productName}-v${version}-setup-${os}-${arch}.${ext}
   oneClick: false
   perMachine: true
   allowToChangeInstallationDirectory: true
