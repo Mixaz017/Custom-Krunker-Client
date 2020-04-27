@@ -338,12 +338,12 @@ class Utilities {
 				name: "Custom Splash Screen Background",
 				pre: "<div class='setHed customUtility'>Splash Screen</div>",
 				val: "",
-				html: () => "<span class='floatR'>| <a onclick='let dirPath = remote.dialog.showOpenDialogSync({properties: [\x22openDirectory\x22]}); if (dirPath && dirPath[0]) utilities.setSetting(\x22customSplashBackground\x22, dirPath[0])' class='menuLink'>Select</a> | <a onclick='window.utilities.openItem(window.utilities.settings.customSplashBackground.val)' class='menuLink'>Open</a></span>" + generateSetting("url", "customSplashBackground", this, "Splash Screen Background Path/URL")
+				html: () => "<span class='floatR'>| <a onclick='let dirPath = remote.dialog.showOpenDialogSync({properties: [\x22openFile\x22]}); if (dirPath && dirPath[0]) utilities.setSetting(\x22customSplashBackground\x22, dirPath[0])' class='menuLink'>Select</a> | <a onclick='window.utilities.openItem(window.utilities.settings.customSplashBackground.val)' class='menuLink'>Open</a></span>" + generateSetting("url", "customSplashBackground", this, "Splash Screen Background Path/URL")
 			},
 			customSplashFont: {
 				name: "Custom Splash Screen Font",
 				val: "",
-				html: () => "<span class='floatR'>| <a onclick='let dirPath = remote.dialog.showOpenDialogSync({properties: [\x22openDirectory\x22]}); if (dirPath && dirPath[0]) utilities.setSetting(\x22customSplashFont\x22, dirPath[0])' class='menuLink'>Select</a> | <a onclick='window.utilities.openItem(window.utilities.settings.customSplashFont.val)' class='menuLink'>Open</a></span>" + generateSetting("url", "customSplashFont", this, "Splash Screen Font Path/URL")
+				html: () => "<span class='floatR'>| <a onclick='let dirPath = remote.dialog.showOpenDialogSync({properties: [\x22openFile\x22]}); if (dirPath && dirPath[0]) utilities.setSetting(\x22customSplashFont\x22, dirPath[0])' class='menuLink'>Select</a> | <a onclick='window.utilities.openItem(window.utilities.settings.customSplashFont.val)' class='menuLink'>Open</a></span>" + generateSetting("url", "customSplashFont", this, "Splash Screen Font Path/URL")
 			},
 			autoUpdateType: {
 				name: "Auto Update Behavior",
