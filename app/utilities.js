@@ -52,15 +52,15 @@ class Utilities {
 					}
 				}
 			},
-			frameLimit: {
-				name: "Hard FPS Limit",
-				pre: "<div class='setHed customUtility'>More Performance</div>",
-				val: 0,
-				min: 0,
-				max: 1000,
-				step: 1,
-				html: () => generateSetting("slider", "frameLimit", this)
-			},
+			// frameLimit: {
+			// 	name: "Hard FPS Limit",
+			// 	pre: "<div class='setHed customUtility'>More Performance</div>",
+			// 	val: 0,
+			// 	min: 0,
+			// 	max: 1000,
+			// 	step: 1,
+			// 	html: () => generateSetting("slider", "frameLimit", this)
+			// },
 			customFontsCSSFix: {
 				name: "Fix CSS for Custom Fonts",
 				pre: "<div class='setHed customUtility'>Patch</div>",
@@ -561,20 +561,20 @@ class Utilities {
 		this.consts.css = consts.css
 	}
 
-	waitGameInit() {
-		if (window.hasOwnProperty("windows")) {
-			// FPS Limit
-			const requestAnimFrameOrig = requestAnimFrame
-			let lastTime = 0
-			requestAnimFrame = function () {
-				if (utilities && utilities.settings.frameLimit.val > 0) {
-					for (let i = 0; i < Number.MAX_SAFE_INTEGER && performance.now() - lastTime < 1000 / utilities.settings.frameLimit.val; i++) { }
-					lastTime = performance.now()
-				}
-				requestAnimFrameOrig(...arguments)
-			}
-		} else setTimeout(() => this.waitGameInit(), 400)
-	}
+	// waitGameInit() {
+	// 	if (window.hasOwnProperty("windows")) {
+	// 		// FPS Limit
+	// 		const requestAnimFrameOrig = requestAnimFrame
+	// 		let lastTime = 0
+	// 		requestAnimFrame = function () {
+	// 			if (utilities && utilities.settings.frameLimit.val > 0) {
+	// 				for (let i = 0; i < Number.MAX_SAFE_INTEGER && performance.now() - lastTime < 1000 / utilities.settings.frameLimit.val; i++) { }
+	// 				lastTime = performance.now()
+	// 			}
+	// 			requestAnimFrameOrig(...arguments)
+	// 		}
+	// 	} else setTimeout(() => this.waitGameInit(), 400)
+	// }
 
 	onLoad() {
 		this.initConsts()
@@ -590,7 +590,7 @@ class Utilities {
 				window.utilities.setSetting(name, object['value']);
 			}, delay), true;
 		};
-		this.waitGameInit()
+		// this.waitGameInit()
 
 
 	}
