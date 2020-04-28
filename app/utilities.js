@@ -321,7 +321,7 @@ class Utilities {
 				}
 			},
 			customCSS: {
-				name: "Custom CSS",
+				name: "Custom CSS File",
 				val: "",
 				html: () => generateSetting("url", "customCSS", this, "CSS File Path/URL"),
 				resources: { css: document.createElement("link") },
