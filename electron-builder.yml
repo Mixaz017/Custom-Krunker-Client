@@ -1,5 +1,5 @@
 appId: io.custom.krunker.desktop
-productName: 'Custom Krunker Client'
+productName: 'Custom Client'
 win:
   artifactName: ${productName}-v${version}-portable-${os}-${arch}.${ext}
   target:
