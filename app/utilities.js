@@ -294,13 +294,13 @@ class Utilities {
 				}
 			},
 			hideClaim: {
-				name: "Hide Free KR",
+				name: "Hide Free KR Button",
 				val: false,
 				html: () => generateSetting("checkbox", "hideClaim", this),
 				set: value => claimHolder.style.display = value ? "none" : "inherit"
 			},
 			hideMerch: {
-				name: "Hide Merch",
+				name: "Hide Merch Button",
 				val: false,
 				html: () => generateSetting("checkbox", "hideMerch", this),
 				set: value => merchHolder.style.display = value ? "none" : "inherit"
