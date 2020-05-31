@@ -75,11 +75,14 @@ module.exports.css = {
 	noTextShadows: `*, .button.small, .bigShadowT {
 		text-shadow: none !important;
 	}`,
-	hideAds: `#aHolder, .endAHolder, #pre-content-container {
+	hideAds: `#aHolder, .endAHolder {
+		display: none !important;
+	}`,
+	hideAdsFreeKR: `#pre-content-container {
 		display: none !important;
 	}`,
 	hideSocials: `.headerBarRight > .verticalSeparator, .imageButton {
-		display: none
+		display: none !important
 	}`,
 	hidePopupScore: `#scoreText {
 		display: none !important

@@ -284,6 +284,15 @@ class Utilities {
 					else if (!init) this.consts.css.hideAds.remove()
 				}
 			},
+			hideAdsFreeKR: {
+				name: "Hide Free KR Ads",
+				val: false,
+				html: () => generateSetting("checkbox", "hideAdsFreeKR", this),
+				set: (value, init) => {
+					if (value) document.head.appendChild(this.consts.css.hideAdsFreeKR)
+					else if (!init) this.consts.css.hideAdsFreeKR.remove()
+				}
+			},
 			hideClaim: {
 				name: "Hide Free KR",
 				val: false,
