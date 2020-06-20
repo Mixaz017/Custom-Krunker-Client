@@ -56,7 +56,7 @@
 		// Find a internal CSS rule of the background image and replace it
 		if (config.get("utilities_customSplashBackground")) {
 			let targetStyle = Array.from(Array.from(document.styleSheets).find(styleSheet => styleSheet.ownerNode.id == "splash").cssRules).find(rule => rule.selectorText == "body").style
-			targetStyle.backgroundImage = `url("${config.get("utilities_customSplashBackground").replace(/\\/g, "/")}"), ${targetStyle.backgroundImage}`
+			targetStyle.backgroundImage = `url("${config.get("utilities_customSplashBackground").replace(/\\/g, "/")}")`
 		}
 		// Same thing with font
 		if (config.get("utilities_customSplashFont")) {
