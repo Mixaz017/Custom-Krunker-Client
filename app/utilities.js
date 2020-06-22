@@ -275,51 +275,6 @@ class Utilities {
 					healthBar.style.display = ["both", "bar"].includes(value) ? "inherit" : "none"
 				}
 			},
-			hideAds: {
-				name: "Hide Ads",
-				val: true,
-				html: () => generateSetting("checkbox", "hideAds", this),
-				set: (value, init) => {
-					if (value) document.head.appendChild(this.consts.css.hideAds)
-					else if (!init) this.consts.css.hideAds.remove()
-				}
-			},
-			hideAdsFreeKR: {
-				name: "Hide Free KR Ads",
-				val: false,
-				html: () => generateSetting("checkbox", "hideAdsFreeKR", this),
-				set: (value, init) => {
-					if (value) document.head.appendChild(this.consts.css.hideAdsFreeKR)
-					else if (!init) this.consts.css.hideAdsFreeKR.remove()
-				}
-			},
-			hideClaim: {
-				name: "Hide Free KR Button",
-				val: false,
-				html: () => generateSetting("checkbox", "hideClaim", this),
-				set: value => claimHolder.style.display = value ? "none" : "inherit"
-			},
-			hideMerch: {
-				name: "Hide Merch Button",
-				val: false,
-				html: () => generateSetting("checkbox", "hideMerch", this),
-				set: value => merchHolder.style.display = value ? "none" : "inherit"
-			},
-			hideSocials: {
-				name: "Hide Social Buttons",
-				val: false,
-				html: () => generateSetting("checkbox", "hideSocials", this),
-				set: (value, init) => {
-					if (value) document.head.appendChild(this.consts.css.hideSocials)
-					else if (!init) this.consts.css.hideSocials.remove()
-				}
-			},
-			hideStreams: {
-				name: "Hide Streams",
-				val: false,
-				html: () => generateSetting("checkbox", "hideStreams", this),
-				set: value => streamContainer.style.display = value ? "none" : "inherit"
-			},
 			noTextShadows: {
 				name: "Remove Text Shadows",
 				val: false,
