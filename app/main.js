@@ -132,10 +132,10 @@ const initGameWindow = () => {
 	let swapFolder = consts.joinPath(app.getPath('documents'), '/KrunkerResourceSwapper');
 	try { fs.mkdir(swapFolder, { recursive: true }, e => { }); } catch (e) { };
 	let swap = { filter: { urls: [] }, files: {} };
-	const allFilesSync = (dir, fileList = []) => {
+	const allFilesSync = (dir = swapFolder) => {
 		fs.readdirSync(dir).forEach(file => {
 			const filePath = consts.joinPath(dir, file);
-			let useAssets = RegExp(`${swapFolder.replace(/\\/g, "\\\\")}\\\\(models|textures)\\b`).test(dir);
+			let useAssets = RegExp(`^${swapFolder.replace(/\\/g, "/")}/(models|textures)($|\/)`).test(dir.replace(/\\/g, "/"));
 			if (fs.statSync(filePath).isDirectory()) {
 				if (!(/\\(docs)$/.test(filePath)))
 					allFilesSync(filePath);
