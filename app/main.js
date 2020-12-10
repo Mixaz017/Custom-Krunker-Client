@@ -164,7 +164,7 @@ const initGameWindow = () => {
 		let dumpedURLs = [],
 			dumpPath = config.get("utilities_dumpPath", "") || path.join(app.getPath("documents"), "KrunkerResourceDump")
 		gameWindow.webContents.session.webRequest.onCompleted(details => {
-			if (details.statusCode == 200 && /^http(s?):\/\/(beta|assets\.)?krunker.io\/*/.test(details.url) && !dumpedURLs.includes(details.url)) {
+			if (details.statusCode == 200 && /^http(s?):\/\/(comp\.|assets\.)?krunker.io\/*/.test(details.url) && !dumpedURLs.includes(details.url)) {
 				dumpedURLs.push(details.url)
 				const request = net.request(details.url)
 				let raw = ""
