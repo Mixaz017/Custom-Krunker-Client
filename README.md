@@ -1,29 +1,15 @@
 # Custom-Krunker-Client
-An Open-Source, Customized Krunker Desktop Client.  
-We have a [Discord Server](https://discord.gg/Gwb8psk) and providing supports!  
-Please report bugs and crashes, it helps fixing things by a lot.
 
-Worst client name in the universe btw
+**Deprecated** - This project is no longer actively maintained
 
-## Status
-I purely enjoy working on this project, but this project is not my job and developments can be unstable.
-As of now, this client is based on the official client, and main focus is to bring bugfixes, tweaks, and more customizability to the client.
-
-I'm looking for a developer to maintain this client because I don't play Krunker anymore.
-If you are interested and thinks that your skill is enough to maintain this client, join the Discord and DM me.
-
-I'm also accepting bug reports, suggestions and feedbacks in our Discord.
-
-Using [CClient](https://discord.gg/5ZMvrGT) is recommended over this client because the client is more stable and provides more actually useful features.
-Also Cuffuffles, the developer of CClient, is a awesome guy
+Customized Krunker Desktop Client.  
+[Discord Server](https://discord.gg/Gwb8psk)  
 
 ## Why this Client?
 - This client is meant to be a superior of the official client.
 - Many extra features available. You can suggest features you want in the Discord to improve the client as well.
 
 ## Features
-- Every single features from official client is available ( Resource Swapper, Unlimited FPS, etc. ) 
----
 - Patches
 	- Adds compatibility with custom fonts to few social and market pages ( optional )
 	- Fixes "Clear Cache" button ( also works faster )
